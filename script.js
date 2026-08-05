@@ -51,6 +51,7 @@
   const skipButton = document.getElementById("skipOpening");
   const skipLink = document.getElementById("skipLink");
   const confettiLayer = document.getElementById("confettiLayer");
+  const openingMusic = document.getElementById("openingMusic");
   const toast = document.getElementById("toast");
   const dialog = document.getElementById("responseDialog");
   const dialogClose = document.getElementById("dialogClose");
@@ -327,9 +328,25 @@
     finalizeBridge(true);
   }
 
-  function finishOpening(skipAnimation) {
+  function startOpeningMusic() {
+    if (!openingMusic) return;
+    try { openingMusic.currentTime = 0; } catch (error) { /* The media may not be ready yet. */ }
+    const playback = openingMusic.play();
+    if (playback && typeof playback.catch === "function") {
+      playback.catch(function () { /* Some browsers or device settings can block audio. */ });
+    }
+  }
+
+  function stopOpeningMusic() {
+    if (!openingMusic) return;
+    openingMusic.pause();
+    try { openingMusic.currentTime = 0; } catch (error) { /* The media may already be detached. */ }
+  }
+
+  function finishOpening(skipAnimation, withMusic) {
     if (invitationOpened) return;
     invitationOpened = true;
+    if (withMusic) startOpeningMusic();
     openButton.disabled = true;
     openHint.disabled = true;
     skipButton.disabled = true;
@@ -1379,14 +1396,14 @@
   }
 
   function setupInteractions() {
-    if (openButton) openButton.addEventListener("click", function () { finishOpening(false); });
-    if (openHint) openHint.addEventListener("click", function () { finishOpening(false); });
-    if (skipButton) skipButton.addEventListener("click", function () { finishOpening(true); });
+    if (openButton) openButton.addEventListener("click", function () { finishOpening(false, true); });
+    if (openHint) openHint.addEventListener("click", function () { finishOpening(false, true); });
+    if (skipButton) skipButton.addEventListener("click", function () { finishOpening(true, false); });
     if (skipLink) {
       skipLink.addEventListener("click", function (event) {
         if (!invitationOpened) {
           event.preventDefault();
-          finishOpening(true);
+          finishOpening(true, false);
           window.setTimeout(function () {
             const invitation = document.getElementById("invitation");
             if (invitation) invitation.scrollIntoView();
@@ -1394,6 +1411,8 @@
         }
       });
     }
+
+    window.addEventListener("pagehide", stopOpeningMusic);
 
     const interactionButtons = [
       ["calendarButton", downloadCalendarEvent],
@@ -1454,7 +1473,7 @@
     const previewParams = new URLSearchParams(window.location.search);
     if (previewParams.get("preview") === "1") {
       document.documentElement.dataset.previewSection = previewParams.get("section") || window.location.hash.slice(1) || "invitation";
-      finishOpening(true);
+      finishOpening(true, false);
       if (window.location.hash && !previewParams.get("section")) {
         let targetId = "";
         try {
