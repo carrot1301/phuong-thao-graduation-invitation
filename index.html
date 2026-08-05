@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f2e8">
+  <meta name="description" content="Thiệp mời dự lễ tốt nghiệp của Nguyễn Phương Thảo — 16:00, Thứ Bảy ngày 08.08.2026 tại Đại học Văn Lang, Cơ sở 3.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Graduation Invitation · Nguyễn Phương Thảo">
+  <meta property="og:description" content="Hẹn gặp bạn tại lễ tốt nghiệp của Nguyễn Phương Thảo vào ngày 08.08.2026.">
+  <meta property="og:image" content="assets/phuong-thao-portrait.jpg">
+  <title>Graduation Invitation · Nguyễn Phương Thảo</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/silk-background.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/envelope.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/gold-seal.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="is-locked">
+  <a class="skip-link" href="#invitation" id="skipLink">Bỏ qua phần mở thiệp</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <section class="opening-screen" id="openingScreen" aria-label="Mở thiệp mời tốt nghiệp">
+    <div class="opening-glow opening-glow--one" aria-hidden="true"></div>
+    <div class="opening-glow opening-glow--two" aria-hidden="true"></div>
+
+    <div class="opening-layout">
+      <header class="opening-copy">
+        <p class="opening-script">Graduation</p>
+        <p class="opening-kicker">Invitation</p>
+        <img class="opening-cap" src="assets/cap-divider.svg" alt="" width="700" height="133">
+      </header>
+
+      <div class="envelope-scene" id="envelopeScene">
+        <div class="envelope" aria-hidden="true">
+          <div class="envelope-backplate"></div>
+
+          <div class="letter-card">
+            <div class="letter-card-content">
+              <span class="letter-monogram">G</span>
+              <span class="letter-rule"></span>
+              <strong>Nguyễn Phương Thảo</strong>
+              <small>08 · 08 · 2026</small>
+            </div>
+          </div>
+
+          <img class="envelope-pocket" src="assets/envelope.webp" alt="" width="1166" height="864" decoding="sync">
+
+          <div class="envelope-flap">
+            <img class="envelope-flap-front" src="assets/envelope.webp" alt="" width="1166" height="864" decoding="sync">
+            <span class="envelope-flap-back"></span>
+          </div>
+
+          <button class="wax-seal" id="openInvitation" type="button" aria-label="Chạm để mở thiệp mời">
+            <span class="seal-image" aria-hidden="true"></span>
+            <span class="seal-ring" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="opening-actions">
+        <button class="open-hint" id="openHint" type="button">
+          <span>Chạm vào dấu sáp để mở thiệp</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14m0 0-5-5m5 5 5-5"/></svg>
+        </button>
+        <button class="skip-opening" id="skipOpening" type="button">Bỏ qua</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-shell" id="pageShell" aria-hidden="true" inert>
+    <header class="topbar" id="topbar">
+      <a class="topbar-brand" href="#invitation" aria-label="Về đầu thiệp">
+        <span class="brand-seal">G</span>
+        <span class="brand-copy"><b>Phương Thảo</b><small>Graduation · 2026</small></span>
+      </a>
+      <nav class="topbar-actions" aria-label="Tiện ích thiệp mời">
+        <button class="topbar-text-button" id="calendarTopButton" type="button">Lưu lịch</button>
+        <button class="icon-button" id="shareButton" type="button" aria-label="Chia sẻ thiệp mời">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.5-4.4M8.2 13.2l7.5 4.4"/></svg>
+        </button>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="invitation-section silk-section" id="invitation">
+        <span class="silk-shine silk-shine--one" aria-hidden="true"></span>
+        <span class="silk-shine silk-shine--two" aria-hidden="true"></span>
+
+        <div class="invitation-heading layout-container" data-reveal="up">
+          <div class="name-lockup">
+            <div class="name-script" aria-label="Phương Thảo">
+              <span>Phương</span><span>Thảo</span>
+            </div>
+            <img class="name-cap" src="assets/cap-icon.svg" alt="" width="108" height="96">
+          </div>
+          <p><span>Graduation</span> <span>celebration</span></p>
+        </div>
+
+        <div class="invitation-grid layout-container">
+          <div class="invitation-copy">
+            <p class="lead-copy" data-reveal="up">
+              <span class="lead-sentence"><span class="lead-line">Một hành trình khép lại,</span> <span class="lead-line">mở ra một chặng đường mới.</span></span>
+              <span class="lead-sentence"><span class="lead-line">Em rất hạnh phúc nếu có</span> <span class="lead-line">sự hiện diện của Anh/Chị</span> <span class="lead-line">trong khoảnh khắc đáng nhớ này.</span></span>
+            </p>
+
+            <div class="guest-invite" data-reveal="up">
+              <span>Trân trọng kính mời</span>
+              <strong id="guestName">Bạn thân mến</strong>
+              <span>đến tham dự Lễ tốt nghiệp của</span>
+            </div>
+
+            <div class="quick-facts" data-reveal="up">
+              <span><i aria-hidden="true">08</i><b>Tháng 08 · 2026</b></span>
+              <span><i aria-hidden="true">16:00</i><b>Thứ Bảy</b></span>
+            </div>
+          </div>
+
+          <div class="portrait-card-wrap" data-reveal="scale" data-parallax-card>
+            <img class="gold-ribbon" src="assets/gold-ribbon.webp" alt="" width="484" height="704" decoding="async">
+            <article class="portrait-card">
+              <div class="portrait-frame">
+                <img src="assets/phuong-thao-portrait.webp" alt="Chân dung Nguyễn Phương Thảo trong lễ phục tốt nghiệp" width="674" height="842" decoding="async">
+              </div>
+              <h1>Nguyễn Phương Thảo</h1>
+              <p>Đại học Văn Lang · Cơ sở 3</p>
+              <address>69/89 Đặng Thùy Trâm, Phường Bình Lợi Trung, TP. HCM</address>
+              <div class="portrait-card-date" aria-label="Thứ Bảy, ngày 08 tháng 08 năm 2026, lúc 16 giờ">
+                <span>Thứ Bảy</span><strong>08 · 08 · 2026</strong><span>16:00</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <a class="scroll-cue" href="#details" aria-label="Xem thời gian và địa điểm">
+          <span>Chi tiết buổi lễ</span><i aria-hidden="true"></i>
+        </a>
+      </section>
+
+      <section class="details-section silk-section section" id="details">
+        <div class="layout-container">
+          <header class="section-heading section-heading--center" data-reveal="up">
+            <p class="eyebrow">The special day</p>
+            <h2>When <span>&amp;</span> Where</h2>
+          </header>
+
+          <div class="details-grid">
+            <article class="detail-card detail-card--time" data-reveal="left">
+              <span class="outline-icon" aria-hidden="true">
+                <svg viewBox="0 0 44 44"><rect x="7" y="10" width="30" height="27" rx="1"/><path d="M14 6v8m16-8v8M7 18h30"/><rect x="18" y="24" width="8" height="7"/></svg>
+              </span>
+              <p class="detail-label">Thời gian</p>
+              <div class="editorial-date">
+                <strong>08</strong>
+                <span><b>Tháng 8</b><small>2026</small></span>
+              </div>
+              <p class="detail-note">Thứ Bảy, lúc <b>16:00–17:00</b></p>
+              <button class="line-button" id="calendarButton" type="button">Lưu vào lịch <span aria-hidden="true">↗</span></button>
+            </article>
+
+            <article class="detail-card detail-card--place" data-reveal="right">
+              <span class="outline-icon" aria-hidden="true">
+                <svg viewBox="0 0 44 44"><path d="M34 19c0 9-12 18-12 18S10 28 10 19a12 12 0 1 1 24 0Z"/><circle cx="22" cy="19" r="4"/></svg>
+              </span>
+              <p class="detail-label">Địa điểm</p>
+              <h3>Đại học<br>Văn Lang</h3>
+              <p>Cơ sở 3, Tòa J<br>69/89 Đặng Thùy Trâm, Phường Bình Lợi Trung, TP. HCM</p>
+              <button class="line-button" id="mapButton" type="button">Xem chỉ đường <span aria-hidden="true">›</span></button>
+            </article>
+          </div>
+
+          <div class="countdown-panel" data-reveal="up">
+            <p>Cùng đếm ngược đến ngày gặp nhau</p>
+            <div class="countdown" id="countdown" role="timer" aria-label="Thời gian còn lại đến lễ tốt nghiệp">
+              <span><strong data-unit="days">00</strong><small>Ngày</small></span>
+              <i>:</i>
+              <span><strong data-unit="hours">00</strong><small>Giờ</small></span>
+              <i>:</i>
+              <span><strong data-unit="minutes">00</strong><small>Phút</small></span>
+              <i>:</i>
+              <span><strong data-unit="seconds">00</strong><small>Giây</small></span>
+            </div>
+            <p class="countdown-message" id="countdownMessage">Mỗi khoảnh khắc đều đang đưa chúng ta gần hơn đến ngày đặc biệt.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="campus-map-section section" id="campus-map">
+        <div class="map-orbit map-orbit--one" aria-hidden="true"></div>
+        <div class="map-orbit map-orbit--two" aria-hidden="true"></div>
+        <div class="layout-container">
+          <header class="map-section-heading" data-reveal="up">
+            <div>
+              <p class="eyebrow">Arrival guide</p>
+              <h2>Sơ đồ<br><em>ngày tốt nghiệp</em></h2>
+            </div>
+            <p>Chọn từng sơ đồ để xem lộ trình đến trường và cách di chuyển trong khuôn viên. Bạn có thể chạm vào các điểm nổi bật hoặc mở toàn màn hình để kéo và phóng to.</p>
+          </header>
+
+          <div class="map-explorer" data-reveal="scale">
+            <div class="map-toolbar">
+              <div class="map-tabs" role="tablist" aria-label="Chọn sơ đồ">
+                <button id="mapTabAccess" class="map-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="mapSlideAccess" data-map-tab="0">
+                  <span>01</span> Đường đến trường
+                </button>
+                <button id="mapTabCampus" class="map-tab" type="button" role="tab" aria-selected="false" aria-controls="mapSlideCampus" data-map-tab="1">
+                  <span>02</span> Trong khuôn viên
+                </button>
+              </div>
+              <button class="map-expand-button" id="mapExpandButton" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg>
+                <span>Khám phá sơ đồ</span>
+              </button>
+            </div>
+
+            <div class="map-stage" id="mapPreviewStage">
+              <figure class="map-slide is-active" id="mapSlideAccess" role="tabpanel" aria-labelledby="mapTabAccess" data-map-slide="0">
+                <button class="map-slide-open" type="button" data-open-map="0" aria-label="Mở toàn màn hình sơ đồ đường đến trường">
+                  <img src="assets/campus-access-map.jpg" alt="Sơ đồ đường đến cơ sở 3 Đại học Văn Lang, thể hiện cổng chính Đặng Thùy Trâm, cổng Quảng Hàm và hướng tiếp cận bằng ô tô, xe máy." width="2048" height="1024" loading="lazy" decoding="async">
+                </button>
+                <div class="inline-hotspots" data-inline-hotspots="0"></div>
+              </figure>
+
+              <figure class="map-slide" id="mapSlideCampus" role="tabpanel" aria-labelledby="mapTabCampus" data-map-slide="1" hidden>
+                <button class="map-slide-open" type="button" data-open-map="1" aria-label="Mở toàn màn hình sơ đồ trong khuôn viên">
+                  <img src="assets/graduation-campus-map.jpg" alt="Sơ đồ khuôn viên cơ sở 3, thể hiện lối vào, các tòa nhà và hướng di chuyển đến khu vực lễ tốt nghiệp." width="2048" height="1024" loading="lazy" decoding="async">
+                </button>
+                <div class="inline-hotspots" data-inline-hotspots="1"></div>
+              </figure>
+              <div class="map-stage-shade" aria-hidden="true"></div>
+              <p class="map-tap-hint"><span aria-hidden="true">◎</span> Chạm điểm nổi bật hoặc mở toàn màn hình</p>
+            </div>
+
+            <div class="map-meta" aria-live="polite">
+              <span class="map-number" id="mapNumber">01</span>
+              <div><h3 id="mapTitle">Đường đến trường</h3><p id="mapDescription">Lộ trình tiếp cận Cơ sở 3 qua cổng chính Đặng Thùy Trâm và các cổng đường Dương Quảng Hàm.</p></div>
+            </div>
+            <div class="map-quick-points" id="mapQuickPoints" aria-label="Điểm cần lưu ý trên sơ đồ"></div>
+          </div>
+
+          <p class="map-mobile-note" data-reveal="up"><span aria-hidden="true">↻</span> Trên điện thoại, xoay ngang màn hình để đọc sơ đồ rõ hơn.</p>
+        </div>
+      </section>
+
+      <section class="guest-section section" id="guest-information">
+        <div class="guest-orbit guest-orbit--one" aria-hidden="true"></div>
+        <div class="guest-orbit guest-orbit--two" aria-hidden="true"></div>
+        <div class="guest-card layout-container" data-reveal="scale">
+          <header>
+            <span class="mini-seal" aria-hidden="true">G</span>
+            <p class="eyebrow">A little note</p>
+            <h2>Guest Information</h2>
+            <p class="guest-intro">Một vài lưu ý nhỏ để mình gặp nhau thật thuận tiện trong ngày diễn ra buổi lễ.</p>
+          </header>
+
+          <div class="guest-notes">
+            <article data-reveal="up">
+              <span>01</span>
+              <div><h3>Lối vào</h3><p>Vui lòng đi vào trường bằng <b>cổng chính đường Đặng Thùy Trâm</b> để việc di chuyển được thuận tiện.</p></div>
+            </article>
+            <article data-reveal="up">
+              <span>02</span>
+              <div><h3>Thẻ sinh viên &amp; mã QR</h3><p>Khi qua cổng, khách mời cần xuất trình thẻ sinh viên hoặc mã QR. Bạn nên lưu sẵn ảnh mã trong điện thoại; mã chỉ có hiệu lực cho <b>một lượt vào trường</b>, vì vậy đừng quét trước khi đến dự lễ.</p></div>
+            </article>
+            <article data-reveal="up">
+              <span>03</span>
+              <div><h3>Cần hỗ trợ?</h3><p>Trong lúc Phương Thảo tham gia nghi thức tốt nghiệp, bạn có thể liên hệ <b>Nguyên Trí</b>.</p><a href="tel:+84886871437">0886 871 437 <span aria-hidden="true">↗</span></a></div>
+            </article>
+          </div>
+
+          <p class="guest-closing" data-reveal="up">Ngày 08.08.2026 sẽ trở nên ý nghĩa hơn rất nhiều khi có mọi người hiện diện. Em mong được cùng mọi người chia sẻ niềm vui và ghi lại những khoảnh khắc đáng nhớ trong cột mốc đặc biệt này. Hẹn gặp mọi người tại lễ tốt nghiệp nhé!</p>
+        </div>
+      </section>
+
+      <section class="memory-section silk-section section" id="memories">
+        <div class="layout-container memory-layout">
+          <header class="memory-heading" data-reveal="up">
+            <p class="eyebrow">A beautiful milestone</p>
+            <h2>Giữ lại những<br><em>khoảnh khắc thật đẹp</em></h2>
+            <p>Tấm bằng là điểm kết của một chặng đường, nhưng những nụ cười và tình cảm trong ngày hôm ấy sẽ còn ở lại thật lâu.</p>
+          </header>
+
+          <div class="memory-collage" data-collage aria-label="Ảnh kỷ niệm tốt nghiệp của Phương Thảo">
+            <img class="memory-person" src="assets/phuong-thao-cutout.webp" alt="Phương Thảo trong lễ phục tốt nghiệp" width="1469" height="1102" loading="lazy" decoding="async" data-depth="8">
+            <div class="memory-paper" data-depth="-5">
+              <img src="assets/note-paper.webp" alt="" width="711" height="1035" loading="lazy" decoding="async">
+              <blockquote>“Hold memories lightly, for they are the true treasures.”</blockquote>
+              <p>Hẹn gặp bạn trong ngày đặc biệt này.</p>
+            </div>
+            <img class="memory-pearls" src="assets/pearls.webp" alt="" width="145" height="148" loading="lazy" decoding="async" data-depth="12">
+            <img class="memory-flower" src="assets/cream-flower.webp" alt="" width="344" height="313" loading="lazy" decoding="async" data-depth="14">
+          </div>
+        </div>
+      </section>
+
+      <section class="rsvp-section section" id="rsvp">
+        <span class="rsvp-star rsvp-star--one" aria-hidden="true">✦</span>
+        <span class="rsvp-star rsvp-star--two" aria-hidden="true">✧</span>
+        <span class="rsvp-star rsvp-star--three" aria-hidden="true">✦</span>
+        <div class="rsvp-card layout-container" data-reveal="scale">
+          <img class="rsvp-cap" src="assets/cap-divider.svg" alt="" width="700" height="133">
+          <p class="eyebrow">Will you be there?</p>
+          <h2>Sự hiện diện của bạn<br><em>là món quà thật quý</em></h2>
+          <p>Mình rất mong được gặp bạn và cùng chia sẻ niềm vui trong ngày đặc biệt này.</p>
+          <div class="rsvp-actions">
+            <button class="primary-button" data-rsvp="yes" type="button">Mình sẽ đến <span aria-hidden="true">♥</span></button>
+            <button class="secondary-button" data-rsvp="wish" type="button">Gửi một lời chúc</button>
+          </div>
+          <p class="rsvp-status" id="rsvpStatus" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+      <span class="footer-seal" aria-hidden="true">G</span>
+      <p class="footer-script">Thank you</p>
+      <p>Hẹn gặp bạn trong ngày thật đẹp này</p>
+      <small>Graduation · 2026</small>
+    </footer>
+  </div>
+
+  <div class="map-modal" id="mapModal" hidden>
+    <section class="map-modal-panel" role="dialog" aria-modal="true" aria-labelledby="mapModalTitle">
+      <header class="map-modal-header">
+        <div>
+          <p class="eyebrow">Interactive campus guide</p>
+          <h2 id="mapModalTitle">Đường đến trường</h2>
+        </div>
+        <button class="map-modal-close" id="mapModalClose" type="button" aria-label="Đóng sơ đồ">×</button>
+      </header>
+
+      <div class="map-modal-tabs" role="tablist" aria-label="Chọn sơ đồ toàn màn hình">
+        <button class="is-active" type="button" role="tab" aria-selected="true" data-map-modal-tab="0">Đường đến trường</button>
+        <button type="button" role="tab" aria-selected="false" data-map-modal-tab="1">Trong khuôn viên</button>
+      </div>
+
+      <div class="map-modal-stage" id="mapModalStage" aria-label="Vùng sơ đồ có thể kéo và phóng to">
+        <div class="map-canvas" id="mapCanvas">
+          <img id="mapModalImage" src="assets/campus-access-map.jpg" alt="Sơ đồ đường đến cơ sở 3 Đại học Văn Lang" width="2048" height="1024" draggable="false">
+          <div class="map-modal-hotspots" id="mapModalHotspots"></div>
+        </div>
+        <p class="map-gesture-hint" id="mapGestureHint">Kéo để di chuyển · chụm hai ngón để thu phóng · chạm đúp để phóng to</p>
+      </div>
+
+      <footer class="map-modal-footer">
+        <p id="mapModalDescription">Lộ trình tiếp cận Cơ sở 3 qua cổng chính Đặng Thùy Trâm và các cổng đường Dương Quảng Hàm.</p>
+        <div class="map-zoom-controls" aria-label="Điều khiển độ phóng đại">
+          <button id="mapZoomOut" type="button" aria-label="Thu nhỏ">−</button>
+          <output id="mapZoomLevel" aria-live="polite">100%</output>
+          <button id="mapZoomIn" type="button" aria-label="Phóng to">+</button>
+          <button class="map-reset-button" id="mapReset" type="button">Đặt lại</button>
+        </div>
+      </footer>
+    </section>
+  </div>
+
+  <div class="dialog-backdrop" id="responseDialog" hidden>
+    <section class="response-dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="Đóng">×</button>
+      <span class="dialog-seal" aria-hidden="true">G</span>
+      <p class="eyebrow" id="dialogEyebrow">See you there</p>
+      <h2 id="dialogTitle">Hẹn gặp bạn nhé!</h2>
+      <p id="dialogCopy">Mình đã chuẩn bị sẵn lời nhắn xác nhận để bạn gửi cho Nguyên Trí.</p>
+      <label class="wish-field" id="wishField" hidden>
+        <span>Lời chúc của bạn</span>
+        <textarea id="wishInput" rows="4" maxlength="500" placeholder="Viết một lời chúc thật dễ thương..."></textarea>
+      </label>
+      <div class="dialog-actions">
+        <a class="primary-button" id="smsLink" href="sms:+84886871437">Gửi qua tin nhắn</a>
+        <button class="secondary-button" id="copyMessage" type="button">Sao chép lời nhắn</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+  <noscript>
+    <style>.opening-screen{display:none!important}.page-shell{opacity:1!important;visibility:visible!important}.reveal,[data-reveal]{opacity:1!important;transform:none!important}body{overflow:auto!important}</style>
+  </noscript>
+  <script src="script.js"></script>
+</body>
+</html>
