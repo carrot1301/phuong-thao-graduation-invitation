@@ -451,6 +451,7 @@
 
 .source-invite-heading h1 {
   margin: 0;
+  padding-bottom: clamp(1.7rem, 3.4vw, 2.7rem);
   font-family: var(--source-beautiful);
   font-size: clamp(3.1rem, 7vw, 5.6rem);
   font-weight: 400;
@@ -460,7 +461,7 @@
 }
 
 .source-invitation .source-invite-heading > p {
-  margin: 0.82em 0 0;
+  margin: 0;
   font-family: "Be Vietnam Ultra", "Be Vietnam Pro", sans-serif;
   font-size: clamp(1.15rem, 2.8vw, 2.35rem);
   font-style: normal;
@@ -530,13 +531,16 @@
 
 .source-note-guest {
   display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
   min-height: 1.95em;
-  margin: clamp(0.25rem, 1vh, 0.75rem) -6% 0;
-  padding-inline: 2%;
+  margin: clamp(0.25rem, 1vh, 0.75rem) 0 0;
+  padding-inline: 8%;
   align-items: center;
   color: var(--source-wine);
   font-family: var(--source-edwardian);
-  font-size: clamp(2.35rem, 8vw, 4.7rem);
+  font-size: clamp(1.95rem, 6.8vw, 4.15rem);
   font-weight: 400;
   justify-content: center;
   letter-spacing: 0;
@@ -549,12 +553,12 @@
 }
 
 .source-note-guest[data-name-length="medium"] {
-  font-size: clamp(1.95rem, 6.6vw, 3.85rem);
+  font-size: clamp(1.7rem, 5.8vw, 3.45rem);
 }
 
 .source-note-guest[data-name-length="long"] {
-  font-size: clamp(1.58rem, 5.25vw, 3.05rem);
-  line-height: 0.93;
+  font-size: clamp(1.4rem, 4.7vw, 2.75rem);
+  line-height: 0.96;
 }
 
 .source-note-date {
@@ -780,12 +784,13 @@
 }
 
 .source-story-heading h2 {
-  margin: 0.12em 0 0;
+  margin: clamp(1.6rem, 4vw, 2.6rem) 0 0;
   font-family: var(--source-beautiful);
   font-size: clamp(4rem, 10vw, 6.5rem);
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 0.92;
+  white-space: nowrap;
 }
 
 .source-story-message {
@@ -824,6 +829,7 @@
   margin-inline: auto;
   color: var(--source-paper);
   filter: drop-shadow(0 13px 13px rgba(58, 4, 12, 0.22));
+  isolation: isolate;
 }
 
 .source-date-plaque img {
@@ -846,27 +852,33 @@
 }
 
 .source-date-plaque span {
-  top: 25%;
+  top: 24%;
   font-family: var(--source-slight);
-  font-size: clamp(1.45rem, 4vw, 2.15rem);
+  font-size: clamp(1.2rem, 3.1vw, 1.8rem);
   line-height: 1;
+  transform: translateX(-50%) scaleX(0.84);
+  transform-origin: center;
 }
 
 .source-date-plaque strong {
-  top: 33%;
+  top: 35%;
   font-family: "Cormorant Garamond", var(--source-eb);
-  font-size: clamp(5.8rem, 14vw, 8.4rem);
+  font-size: clamp(5.2rem, 12.5vw, 7.6rem);
   font-weight: 700;
-  line-height: 0.92;
+  line-height: 0.88;
 }
 
 .source-date-plaque small {
-  top: 69%;
+  top: 68%;
   font-family: "Cormorant Garamond", var(--source-eb);
   font-size: clamp(2.15rem, 6vw, 3.2rem);
   font-style: italic;
   font-weight: 700;
   line-height: 1;
+}
+
+.map-section-heading--compact {
+  display: block;
 }
 
 .source-event-copy {
@@ -1086,8 +1098,8 @@ html[data-preview-section="eventInformation"] .source-story-message {
 
   .source-invitation { padding-block: 3.3rem 2.5rem; }
   .source-invite-inner { width: calc(100% - 1.2rem); }
-  .source-invite-heading h1 { font-size: clamp(2.3rem, 10.1vw, 3.05rem); line-height: 1; transform: scaleX(0.9); }
-  .source-invitation .source-invite-heading > p { margin-top: 0.85em; font-size: clamp(0.82rem, 3.8vw, 1.12rem); letter-spacing: -0.04em; }
+  .source-invite-heading h1 { padding-bottom: clamp(1.75rem, 8vw, 2.25rem); font-size: clamp(2.3rem, 10.1vw, 3.05rem); line-height: 1; transform: scaleX(0.9); }
+  .source-invitation .source-invite-heading > p { margin-top: 0; font-size: clamp(0.82rem, 3.8vw, 1.12rem); letter-spacing: -0.04em; }
   .source-invitation .source-invite-collage { width: min(92vw, 31rem); max-width: 92vw; margin: 1.25rem auto 0; }
   .source-note-dear { font-size: clamp(0.78rem, 3.6vw, 1.1rem); }
   .source-note-date { gap: 0.18rem; }
@@ -1104,7 +1116,12 @@ html[data-preview-section="eventInformation"] .source-story-message {
   }
   .source-story-clip { top: -1.25rem; width: 6.5rem; }
   .source-story-heading p { font-size: clamp(1.65rem, 8vw, 2.3rem); }
-  .source-story-heading h2 { font-size: clamp(3.65rem, 18vw, 5rem); }
+  .source-story-heading h2 {
+    margin-top: clamp(1.8rem, 8vw, 2.4rem);
+    font-size: clamp(2.65rem, 14vw, 4.2rem);
+    transform: scaleX(0.86);
+    transform-origin: center;
+  }
   .source-story-message {
     margin-top: 2rem;
     font-size: clamp(1.08rem, 5vw, 1.3rem);
@@ -1136,9 +1153,9 @@ html[data-preview-section="eventInformation"] .source-story-message {
   .source-opening .opening-script { font-size: 3.25rem; }
   .source-opening .opening-kicker { font-size: 1.35rem; }
   .source-envelope-scene { width: 84vw; }
-  .source-note-guest { font-size: 2.05rem; }
-  .source-note-guest[data-name-length="medium"] { font-size: 1.7rem; }
-  .source-note-guest[data-name-length="long"] { font-size: 1.36rem; }
+  .source-note-guest { padding-inline: 9%; font-size: 1.88rem; }
+  .source-note-guest[data-name-length="medium"] { font-size: 1.5rem; }
+  .source-note-guest[data-name-length="long"] { font-size: 1.24rem; }
   .source-note-date { font-size: 0.68rem; }
   .source-note-date strong { font-size: 2.45rem; }
   .source-note-date small { font-size: 0.9rem; }
