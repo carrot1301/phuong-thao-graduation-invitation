@@ -31,7 +31,6 @@
       <header class="opening-copy source-opening-copy">
         <p class="opening-script">Graduation</p>
         <p class="opening-kicker">Invitation</p>
-        <img class="opening-cap" src="assets/cap-icon.svg" alt="" width="108" height="96">
       </header>
 
       <div class="envelope-scene source-envelope-scene" id="envelopeScene">
@@ -58,7 +57,7 @@
           <span>Click the seal to open</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14m0 0-5-5m5 5 5-5"/></svg>
         </button>
-        <button class="skip-opening" id="skipOpening" type="button">Bỏ qua</button>
+        <button class="skip-opening" id="skipOpening" type="button">Skip</button>
       </div>
     </div>
   </section>
@@ -92,10 +91,10 @@
             <article class="source-invite-note" data-depth="7">
               <p class="source-note-dear">Dear:</p>
               <p class="source-note-guest" id="guestName" data-guest-name>Nguyên Trí</p>
-              <div class="source-note-date" aria-label="Thứ Bảy, ngày 08 tháng 08 năm 2026, lúc 4 giờ chiều">
+              <div class="source-note-date" aria-label="Thứ Bảy, ngày 08 tháng 08 năm 2026, lúc 15 giờ 30">
                 <span>Saturday</span>
                 <span><strong>08</strong><small>August</small></span>
-                <span>04:00 PM</span>
+                <span>03:30 PM</span>
               </div>
             </article>
 
@@ -104,8 +103,6 @@
               <figure><img src="assets/source-portrait.jpg" alt="Phương Thảo trong lễ phục tốt nghiệp" width="449" height="561"></figure>
               <figure><img src="assets/source-portrait.jpg" alt="" width="449" height="561"></figure>
             </div>
-            <img class="source-collage-pearl" src="assets/source-pearl.png" alt="" width="148" height="148" data-depth="16">
-            <img class="source-collage-orchid" src="assets/source-orchid.png" alt="" width="346" height="615" data-depth="18">
             <img class="source-collage-seal" src="assets/source-gold-seal.png" alt="" width="300" height="298" data-depth="12">
           </div>
 
@@ -119,10 +116,6 @@
         <div class="source-story-glow" aria-hidden="true"></div>
         <article class="source-story-paper layout-container" data-reveal="scale">
           <img class="source-story-texture" src="assets/source-story-paper.jpg" alt="" width="900" height="1600" loading="lazy" decoding="async">
-          <img class="source-story-clip" src="assets/source-clip.png" alt="" width="589" height="589" loading="lazy" decoding="async">
-          <img class="source-story-pearls source-story-pearls--one" src="assets/source-pearls-cluster.png" alt="" width="192" height="192" loading="lazy">
-          <img class="source-story-pearls source-story-pearls--two" src="assets/source-pearls-cluster.png" alt="" width="192" height="192" loading="lazy">
-
           <div class="source-story-content">
             <header class="source-story-heading" data-reveal="up">
               <p>Graduation</p>
@@ -137,11 +130,14 @@
 
             <div class="source-story-event" id="eventInformation" data-reveal="up">
               <div class="source-date-plaque" aria-label="Ngày 08 tháng 08 năm 2026">
-                <img src="assets/source-date-plaque.png" alt="" width="500" height="755" decoding="async">
-                <span>August</span><strong>08</strong><small>2026</small>
+                <img class="source-date-frame" src="assets/source-date-plaque.png" alt="" width="500" height="755" decoding="async">
+                <img class="source-date-pearl source-date-pearl--top" src="assets/source-pearls-cluster.png" alt="" width="192" height="192" loading="lazy">
+                <img class="source-date-pearl source-date-pearl--bottom-small" src="assets/source-pearls-cluster.png" alt="" width="192" height="192" loading="lazy">
+                <img class="source-date-pearl source-date-pearl--bottom-large" src="assets/source-pearls-cluster.png" alt="" width="192" height="192" loading="lazy">
+                <strong>08</strong><span>August</span><small>2026</small>
               </div>
               <div class="source-event-copy">
-                <p class="source-event-venue">Đại học Văn Lang</p>
+                <p class="source-event-venue"><span>Đại học</span> <span>Văn Lang</span></p>
                 <address>69/68 Đặng Thùy Trâm,<br>Phường Bình Lợi Trung, TP. HCM</address>
                 <div class="source-event-time"><span>Saturday</span><strong>15.30 – 17.00</strong></div>
                 <div class="source-event-actions">
@@ -257,7 +253,7 @@
       </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" id="thank-you">
       <div class="footer-rings" aria-hidden="true"><i></i><i></i><i></i></div>
       <span class="footer-seal" aria-hidden="true">G</span>
       <p class="footer-script">Thank you</p>
@@ -313,7 +309,7 @@
         <textarea id="wishInput" rows="4" maxlength="500" placeholder="Viết một lời chúc thật dễ thương..."></textarea>
       </label>
       <div class="dialog-actions">
-        <a class="primary-button" id="smsLink" href="sms:+84886871437">Gửi qua tin nhắn</a>
+        <a class="primary-button" id="smsLink" href="mailto:tnggg146@gmail.com">Gửi lời chúc qua email</a>
         <button class="secondary-button" id="copyMessage" type="button">Sao chép lời nhắn</button>
       </div>
     </section>

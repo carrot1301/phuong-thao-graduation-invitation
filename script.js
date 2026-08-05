@@ -10,6 +10,7 @@
     mapsQuery: "Trường Đại học Văn Lang Cơ sở 3, Đặng Thùy Trâm, Phường Bình Lợi Trung, Thành phố Hồ Chí Minh",
     contactName: "Nguyên Trí",
     contactPhone: "+84886871437",
+    contactEmail: "tnggg146@gmail.com",
     shareText: "Mời bạn đến tham dự Lễ tốt nghiệp của Nguyễn Phương Thảo lúc 15:30 ngày 08.08.2026 tại Đại học Văn Lang – Cơ sở 3."
   };
 
@@ -663,13 +664,20 @@
     const namePrefix = personalizedGuest ? personalizedGuest + " xác nhận" : "Mình xác nhận";
     if (dialogMode === "wish") {
       const wish = wishInput.value.trim();
-      const sender = personalizedGuest ? " — " + personalizedGuest : "";
-      return "Chúc mừng tốt nghiệp Phương Thảo!" + (wish ? " " + wish : " Chúc bạn luôn rạng rỡ và thật thành công trên chặng đường mới!") + sender;
+      const sender = personalizedGuest || "Khách mời";
+      const message = wish || "Chúc bạn luôn rạng rỡ và thật thành công trên chặng đường mới!";
+      return "Chúc mừng tốt nghiệp Phương Thảo!\n\n" + message + "\n\nNgười gửi: " + sender;
     }
     return namePrefix + " sẽ tham dự Lễ tốt nghiệp của Phương Thảo lúc 15:30 ngày 08.08.2026 tại Đại học Văn Lang – Cơ sở 3. Hẹn gặp mọi người nhé!";
   }
 
   function updateSmsLink() {
+    if (dialogMode === "wish") {
+      const sender = personalizedGuest || "Khách mời";
+      const subject = "Lời chúc tốt nghiệp từ " + sender;
+      smsLink.href = "mailto:" + SITE_CONFIG.contactEmail + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(rsvpMessage());
+      return;
+    }
     const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
     const separator = isiOS ? "&" : "?";
     smsLink.href = "sms:" + SITE_CONFIG.contactPhone + separator + "body=" + encodeURIComponent(rsvpMessage());
@@ -685,9 +693,9 @@
     if (mode === "wish") {
       eyebrow.textContent = "Send your love";
       title.textContent = "Gửi Phương Thảo một lời chúc";
-      copy.textContent = "Bạn có thể viết lời chúc bên dưới rồi gửi trực tiếp qua tin nhắn.";
+      copy.textContent = "Bạn có thể viết lời chúc bên dưới rồi gửi tới email của Phương Thảo.";
       wishField.hidden = false;
-      smsLink.textContent = "Gửi lời chúc";
+      smsLink.textContent = "Gửi lời chúc qua email";
     } else {
       eyebrow.textContent = "See you there";
       title.textContent = "Hẹn gặp bạn nhé!";
@@ -1414,7 +1422,7 @@
       wishInput.addEventListener("input", updateSmsLink);
       smsLink.addEventListener("click", function () {
         updateSmsLink();
-        showToast("Đang mở ứng dụng tin nhắn…");
+        showToast(dialogMode === "wish" ? "Đang mở ứng dụng email…" : "Đang mở ứng dụng tin nhắn…");
       });
     }
 
