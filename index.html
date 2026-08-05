@@ -4,67 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f7f2e8">
-  <meta name="description" content="Thiệp mời dự lễ tốt nghiệp của Nguyễn Phương Thảo — 16:00, Thứ Bảy ngày 08.08.2026 tại Đại học Văn Lang, Cơ sở 3.">
+  <meta name="description" content="Thiệp mời dự lễ tốt nghiệp của Nguyễn Phương Thảo — 15:30, Thứ Bảy ngày 08.08.2026 tại Đại học Văn Lang, Cơ sở 3.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:title" content="Graduation Invitation · Nguyễn Phương Thảo">
   <meta property="og:description" content="Hẹn gặp bạn tại lễ tốt nghiệp của Nguyễn Phương Thảo vào ngày 08.08.2026.">
-  <meta property="og:image" content="assets/phuong-thao-portrait.jpg">
+  <meta property="og:image" content="assets/source-portrait.jpg">
   <title>Graduation Invitation · Nguyễn Phương Thảo</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
-  <link rel="preload" href="assets/silk-background.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/fonts/slight.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="assets/fonts/eb-garamond-ultra-bold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/envelope.webp" as="image" type="image/webp">
   <link rel="preload" href="assets/gold-seal.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="source.css">
 </head>
 <body class="is-locked">
   <a class="skip-link" href="#invitation" id="skipLink">Bỏ qua phần mở thiệp</a>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
-  <section class="opening-screen" id="openingScreen" aria-label="Mở thiệp mời tốt nghiệp">
-    <div class="opening-glow opening-glow--one" aria-hidden="true"></div>
-    <div class="opening-glow opening-glow--two" aria-hidden="true"></div>
+  <section class="opening-screen source-opening" id="openingScreen" aria-label="Mở thiệp mời tốt nghiệp">
+    <div class="source-orbit source-orbit--one" aria-hidden="true"></div>
+    <div class="source-orbit source-orbit--two" aria-hidden="true"></div>
 
-    <div class="opening-layout">
-      <header class="opening-copy">
+    <div class="opening-layout source-opening-layout">
+      <header class="opening-copy source-opening-copy">
         <p class="opening-script">Graduation</p>
         <p class="opening-kicker">Invitation</p>
-        <img class="opening-cap" src="assets/cap-divider.svg" alt="" width="700" height="133">
+        <img class="opening-cap" src="assets/cap-icon.svg" alt="" width="108" height="96">
       </header>
 
-      <div class="envelope-scene" id="envelopeScene">
-        <div class="envelope" aria-hidden="true">
-          <div class="envelope-backplate"></div>
-
-          <div class="letter-card">
+      <div class="envelope-scene source-envelope-scene" id="envelopeScene">
+        <div class="source-envelope-object">
+          <div class="letter-card source-letter-card" aria-hidden="true">
             <div class="letter-card-content">
-              <span class="letter-monogram">G</span>
-              <span class="letter-rule"></span>
-              <strong>Nguyễn Phương Thảo</strong>
-              <small>08 · 08 · 2026</small>
+              <span class="source-letter-dear">Dear</span>
+              <strong data-guest-name>Nguyên Trí</strong>
+              <small>Phương Thảo’s Graduation</small>
             </div>
           </div>
 
-          <img class="envelope-pocket" src="assets/envelope.webp" alt="" width="1166" height="864" decoding="sync">
-
-          <div class="envelope-flap">
-            <img class="envelope-flap-front" src="assets/envelope.webp" alt="" width="1166" height="864" decoding="sync">
-            <span class="envelope-flap-back"></span>
-          </div>
-
-          <button class="wax-seal" id="openInvitation" type="button" aria-label="Chạm để mở thiệp mời">
+          <img class="source-envelope-open" src="assets/source-envelope-open.png" alt="" width="1100" height="815" decoding="async">
+          <img class="source-envelope-closed" src="assets/envelope.webp" alt="Phong bì màu đỏ burgundy" width="1166" height="864" decoding="sync">
+          <button class="wax-seal source-wax-seal" id="openInvitation" type="button" aria-label="Chạm vào dấu sáp để mở thiệp mời">
             <span class="seal-image" aria-hidden="true"></span>
             <span class="seal-ring" aria-hidden="true"></span>
           </button>
         </div>
       </div>
 
-      <div class="opening-actions">
+      <div class="opening-actions source-opening-actions">
         <button class="open-hint" id="openHint" type="button">
-          <span>Chạm vào dấu sáp để mở thiệp</span>
+          <span>Click the seal to open</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14m0 0-5-5m5 5 5-5"/></svg>
         </button>
         <button class="skip-opening" id="skipOpening" type="button">Bỏ qua</button>
@@ -87,106 +78,80 @@
     </header>
 
     <main id="main-content">
-      <section class="invitation-section silk-section" id="invitation">
-        <span class="silk-shine silk-shine--one" aria-hidden="true"></span>
-        <span class="silk-shine silk-shine--two" aria-hidden="true"></span>
-
-        <div class="invitation-heading layout-container" data-reveal="up">
-          <div class="name-lockup">
-            <div class="name-script" aria-label="Phương Thảo">
-              <span>Phương</span><span>Thảo</span>
-            </div>
-            <img class="name-cap" src="assets/cap-icon.svg" alt="" width="108" height="96">
-          </div>
-          <p><span>Graduation</span> <span>celebration</span></p>
-        </div>
-
-        <div class="invitation-grid layout-container">
-          <div class="invitation-copy">
-            <p class="lead-copy" data-reveal="up">
-              <span class="lead-sentence"><span class="lead-line">Một hành trình khép lại,</span> <span class="lead-line">mở ra một chặng đường mới.</span></span>
-              <span class="lead-sentence"><span class="lead-line">Em rất hạnh phúc nếu có</span> <span class="lead-line">sự hiện diện của Anh/Chị</span> <span class="lead-line">trong khoảnh khắc đáng nhớ này.</span></span>
-            </p>
-
-            <div class="guest-invite" data-reveal="up">
-              <span>Trân trọng kính mời</span>
-              <strong id="guestName">Bạn thân mến</strong>
-              <span>đến tham dự Lễ tốt nghiệp của</span>
-            </div>
-
-            <div class="quick-facts" data-reveal="up">
-              <span><i aria-hidden="true">08</i><b>Tháng 08 · 2026</b></span>
-              <span><i aria-hidden="true">16:00</i><b>Thứ Bảy</b></span>
-            </div>
-          </div>
-
-          <div class="portrait-card-wrap" data-reveal="scale" data-parallax-card>
-            <img class="gold-ribbon" src="assets/gold-ribbon.webp" alt="" width="484" height="704" decoding="async">
-            <article class="portrait-card">
-              <div class="portrait-frame">
-                <img src="assets/phuong-thao-portrait.webp" alt="Chân dung Nguyễn Phương Thảo trong lễ phục tốt nghiệp" width="674" height="842" decoding="async">
-              </div>
-              <h1>Nguyễn Phương Thảo</h1>
-              <p>Đại học Văn Lang · Cơ sở 3</p>
-              <address>69/89 Đặng Thùy Trâm, Phường Bình Lợi Trung, TP. HCM</address>
-              <div class="portrait-card-date" aria-label="Thứ Bảy, ngày 08 tháng 08 năm 2026, lúc 16 giờ">
-                <span>Thứ Bảy</span><strong>08 · 08 · 2026</strong><span>16:00</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <a class="scroll-cue" href="#details" aria-label="Xem thời gian và địa điểm">
-          <span>Chi tiết buổi lễ</span><i aria-hidden="true"></i>
-        </a>
-      </section>
-
-      <section class="details-section silk-section section" id="details">
-        <div class="layout-container">
-          <header class="section-heading section-heading--center" data-reveal="up">
-            <p class="eyebrow">The special day</p>
-            <h2>When <span>&amp;</span> Where</h2>
+      <section class="invitation-section source-invitation" id="invitation">
+        <div class="source-invite-inner layout-container">
+          <header class="invitation-heading source-invite-heading" data-reveal="up">
+            <h1>Phuong Thao’s</h1>
+            <p>Graduation Celebration</p>
           </header>
 
-          <div class="details-grid">
-            <article class="detail-card detail-card--time" data-reveal="left">
-              <span class="outline-icon" aria-hidden="true">
-                <svg viewBox="0 0 44 44"><rect x="7" y="10" width="30" height="27" rx="1"/><path d="M14 6v8m16-8v8M7 18h30"/><rect x="18" y="24" width="8" height="7"/></svg>
-              </span>
-              <p class="detail-label">Thời gian</p>
-              <div class="editorial-date">
-                <strong>08</strong>
-                <span><b>Tháng 8</b><small>2026</small></span>
+          <div class="invitation-grid source-invite-collage" data-source-collage data-reveal="scale">
+            <img class="source-collage-envelope-back" src="assets/source-envelope-open.png" alt="" width="1100" height="815" decoding="async" data-depth="2">
+            <img class="source-collage-paper" src="assets/final-paper-stack-transparent.png" alt="" width="604" height="760" decoding="async" data-depth="5">
+
+            <article class="source-invite-note" data-depth="7">
+              <p class="source-note-dear">Dear:</p>
+              <p class="source-note-guest" id="guestName" data-guest-name>Nguyên Trí</p>
+              <div class="source-note-date" aria-label="Thứ Bảy, ngày 08 tháng 08 năm 2026, lúc 4 giờ chiều">
+                <span>Saturday</span>
+                <span><strong>08</strong><small>August</small></span>
+                <span>04:00 PM</span>
               </div>
-              <p class="detail-note">Thứ Bảy, lúc <b>16:00–17:00</b></p>
-              <button class="line-button" id="calendarButton" type="button">Lưu vào lịch <span aria-hidden="true">↗</span></button>
             </article>
 
-            <article class="detail-card detail-card--place" data-reveal="right">
-              <span class="outline-icon" aria-hidden="true">
-                <svg viewBox="0 0 44 44"><path d="M34 19c0 9-12 18-12 18S10 28 10 19a12 12 0 1 1 24 0Z"/><circle cx="22" cy="19" r="4"/></svg>
-              </span>
-              <p class="detail-label">Địa điểm</p>
-              <h3>Đại học<br>Văn Lang</h3>
-              <p>Cơ sở 3, Tòa J<br>69/89 Đặng Thùy Trâm, Phường Bình Lợi Trung, TP. HCM</p>
-              <button class="line-button" id="mapButton" type="button">Xem chỉ đường <span aria-hidden="true">›</span></button>
-            </article>
-          </div>
-
-          <div class="countdown-panel" data-reveal="up">
-            <p>Cùng đếm ngược đến ngày gặp nhau</p>
-            <div class="countdown" id="countdown" role="timer" aria-label="Thời gian còn lại đến lễ tốt nghiệp">
-              <span><strong data-unit="days">00</strong><small>Ngày</small></span>
-              <i>:</i>
-              <span><strong data-unit="hours">00</strong><small>Giờ</small></span>
-              <i>:</i>
-              <span><strong data-unit="minutes">00</strong><small>Phút</small></span>
-              <i>:</i>
-              <span><strong data-unit="seconds">00</strong><small>Giây</small></span>
+            <img class="source-collage-envelope-front" src="assets/source-envelope-front.png" alt="" width="1100" height="815" decoding="async" data-depth="8">
+            <div class="source-photo-strip" aria-label="Ảnh kỷ niệm tốt nghiệp của Phương Thảo" data-depth="13">
+              <figure><img src="assets/source-portrait.jpg" alt="Phương Thảo trong lễ phục tốt nghiệp" width="449" height="561"></figure>
+              <figure><img src="assets/source-portrait.jpg" alt="" width="449" height="561"></figure>
             </div>
-            <p class="countdown-message" id="countdownMessage">Mỗi khoảnh khắc đều đang đưa chúng ta gần hơn đến ngày đặc biệt.</p>
+            <img class="source-collage-pearl" src="assets/source-pearl.png" alt="" width="148" height="148" data-depth="16">
+            <img class="source-collage-orchid" src="assets/source-orchid.png" alt="" width="346" height="615" data-depth="18">
+            <img class="source-collage-seal" src="assets/source-gold-seal.png" alt="" width="300" height="298" data-depth="12">
           </div>
+
+          <a class="scroll-cue source-scroll-cue" href="#details" aria-label="Xem lời nhắn và thông tin buổi lễ">
+            <span>Lời nhắn dành cho bạn</span><i aria-hidden="true"></i>
+          </a>
         </div>
+      </section>
+
+      <section class="source-story section" id="details">
+        <div class="source-story-glow" aria-hidden="true"></div>
+        <article class="source-story-paper layout-container" data-reveal="scale">
+          <img class="source-story-texture" src="assets/source-story-paper.jpg" alt="" width="900" height="1600" loading="lazy" decoding="async">
+          <img class="source-story-clip" src="assets/source-clip.png" alt="" width="589" height="589" loading="lazy" decoding="async">
+          <img class="source-story-pearls source-story-pearls--one" src="assets/source-pearls-cluster.png" alt="" width="192" height="192" loading="lazy">
+          <img class="source-story-pearls source-story-pearls--two" src="assets/source-pearls-cluster.png" alt="" width="192" height="192" loading="lazy">
+
+          <div class="source-story-content">
+            <header class="source-story-heading" data-reveal="up">
+              <p>Graduation</p>
+              <h2>Phuong Thao</h2>
+            </header>
+
+            <div class="source-story-message" data-reveal="up">
+              <p>Cảm ơn những người bạn thân thương, những cô em gái đáng yêu cùng các anh, chị đã luôn hiện diện, quan tâm và đồng hành với Phương Thảo trong suốt những năm tháng vừa qua. Mỗi cuộc gặp gỡ, mỗi kỷ niệm và mỗi tình cảm mọi người dành cho Thảo đều là một món quà quý giá, góp phần làm nên một thời thanh xuân thật rực rỡ.</p>
+              <p>Ngày tốt nghiệp sẽ trở nên trọn vẹn hơn khi có mọi người ở bên. Thảo rất mong được cùng mọi người khép lại hành trình đại học bằng những nụ cười, những cái ôm ấm áp và thật nhiều khoảnh khắc đáng nhớ.</p>
+              <p>Hẹn gặp mọi người trong ngày đặc biệt ấy nhé!</p>
+            </div>
+
+            <div class="source-story-event" id="eventInformation" data-reveal="up">
+              <div class="source-date-plaque" aria-label="Ngày 08 tháng 08 năm 2026">
+                <img src="assets/source-date-plaque.png" alt="" width="500" height="755" decoding="async">
+                <span>August</span><strong>08</strong><small>2026</small>
+              </div>
+              <div class="source-event-copy">
+                <p class="source-event-venue">Đại học Văn Lang</p>
+                <address>69/68 Đặng Thùy Trâm,<br>Phường Bình Lợi Trung, TP. HCM</address>
+                <div class="source-event-time"><span>Saturday</span><strong>15.30 – 17.00</strong></div>
+                <div class="source-event-actions">
+                  <button class="source-line-button" id="calendarButton" type="button">Lưu vào lịch <span aria-hidden="true">↗</span></button>
+                  <button class="source-line-button" id="mapButton" type="button">Xem chỉ đường <span aria-hidden="true">›</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
       </section>
 
       <section class="campus-map-section section" id="campus-map">
@@ -276,36 +241,14 @@
         </div>
       </section>
 
-      <section class="memory-section silk-section section" id="memories">
-        <div class="layout-container memory-layout">
-          <header class="memory-heading" data-reveal="up">
-            <p class="eyebrow">A beautiful milestone</p>
-            <h2>Giữ lại những<br><em>khoảnh khắc thật đẹp</em></h2>
-            <p>Tấm bằng là điểm kết của một chặng đường, nhưng những nụ cười và tình cảm trong ngày hôm ấy sẽ còn ở lại thật lâu.</p>
-          </header>
-
-          <div class="memory-collage" data-collage aria-label="Ảnh kỷ niệm tốt nghiệp của Phương Thảo">
-            <img class="memory-person" src="assets/phuong-thao-cutout.webp" alt="Phương Thảo trong lễ phục tốt nghiệp" width="1469" height="1102" loading="lazy" decoding="async" data-depth="8">
-            <div class="memory-paper" data-depth="-5">
-              <img src="assets/note-paper.webp" alt="" width="711" height="1035" loading="lazy" decoding="async">
-              <blockquote>“Hold memories lightly, for they are the true treasures.”</blockquote>
-              <p>Hẹn gặp bạn trong ngày đặc biệt này.</p>
-            </div>
-            <img class="memory-pearls" src="assets/pearls.webp" alt="" width="145" height="148" loading="lazy" decoding="async" data-depth="12">
-            <img class="memory-flower" src="assets/cream-flower.webp" alt="" width="344" height="313" loading="lazy" decoding="async" data-depth="14">
-          </div>
-        </div>
-      </section>
-
-      <section class="rsvp-section section" id="rsvp">
+      <section class="rsvp-section source-rsvp section" id="rsvp">
         <span class="rsvp-star rsvp-star--one" aria-hidden="true">✦</span>
         <span class="rsvp-star rsvp-star--two" aria-hidden="true">✧</span>
         <span class="rsvp-star rsvp-star--three" aria-hidden="true">✦</span>
         <div class="rsvp-card layout-container" data-reveal="scale">
           <img class="rsvp-cap" src="assets/cap-divider.svg" alt="" width="700" height="133">
           <p class="eyebrow">Will you be there?</p>
-          <h2>Sự hiện diện của bạn<br><em>là món quà thật quý</em></h2>
-          <p>Mình rất mong được gặp bạn và cùng chia sẻ niềm vui trong ngày đặc biệt này.</p>
+          <h2><span>Ngày vui sẽ thêm ý nghĩa</span><br><em>khi có bạn hiện diện</em></h2>
           <div class="rsvp-actions">
             <button class="primary-button" data-rsvp="yes" type="button">Mình sẽ đến <span aria-hidden="true">♥</span></button>
             <button class="secondary-button" data-rsvp="wish" type="button">Gửi một lời chúc</button>

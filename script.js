@@ -3,14 +3,14 @@
 
   const SITE_CONFIG = {
     graduateName: "Nguyễn Phương Thảo",
-    eventDate: "2026-08-08T16:00:00+07:00",
-    eventDurationMinutes: 60,
+    eventDate: "2026-08-08T15:30:00+07:00",
+    eventDurationMinutes: 90,
     venue: "Đại học Văn Lang – Cơ sở 3, Tòa J",
-    address: "69/89 Đặng Thùy Trâm, Phường Bình Lợi Trung, TP. HCM",
+    address: "69/68 Đặng Thùy Trâm, Phường Bình Lợi Trung, TP. HCM",
     mapsQuery: "Trường Đại học Văn Lang Cơ sở 3, Đặng Thùy Trâm, Phường Bình Lợi Trung, Thành phố Hồ Chí Minh",
     contactName: "Nguyên Trí",
     contactPhone: "+84886871437",
-    shareText: "Mời bạn đến tham dự Lễ tốt nghiệp của Nguyễn Phương Thảo lúc 16:00 ngày 08.08.2026 tại Đại học Văn Lang – Cơ sở 3."
+    shareText: "Mời bạn đến tham dự Lễ tốt nghiệp của Nguyễn Phương Thảo lúc 15:30 ngày 08.08.2026 tại Đại học Văn Lang – Cơ sở 3."
   };
 
   const CAMPUS_MAPS = [
@@ -57,8 +57,6 @@
   const wishInput = document.getElementById("wishInput");
   const smsLink = document.getElementById("smsLink");
   const copyMessageButton = document.getElementById("copyMessage");
-  const guestNameElement = document.getElementById("guestName");
-
   let invitationOpened = false;
   let countdownTimer = 0;
   let toastTimer = 0;
@@ -73,15 +71,34 @@
   }
 
   function applyPersonalization() {
-    personalizedGuest = getGuestFromUrl();
-    if (personalizedGuest) {
-      guestNameElement.textContent = personalizedGuest;
-      document.title = "Thiệp mời " + personalizedGuest + " · Graduation Phương Thảo";
+    const guestNameElements = Array.from(document.querySelectorAll("[data-guest-name]"));
+    const legacyGuestName = document.getElementById("guestName");
+
+    if (legacyGuestName && !guestNameElements.includes(legacyGuestName)) {
+      guestNameElements.push(legacyGuestName);
     }
 
+    const domGuest = guestNameElements.reduce(function (name, element) {
+      if (name) return name;
+      return (element.textContent || "").replace(/\s+/g, " ").trim();
+    }, "");
+
+    personalizedGuest = getGuestFromUrl() || domGuest || "Nguyên Trí";
+
+    const nameLength = Array.from(personalizedGuest.replace(/\s+/g, "")).length;
+    const lengthGroup = nameLength <= 10 ? "short" : nameLength <= 18 ? "medium" : "long";
+
+    guestNameElements.forEach(function (element) {
+      element.textContent = personalizedGuest;
+      element.setAttribute("data-name-length", lengthGroup);
+    });
+
+    document.title = "Thiệp mời " + personalizedGuest + " · Graduation Phương Thảo";
+
     try {
-      if (window.localStorage.getItem("phuong-thao-rsvp") === "yes") {
-        document.getElementById("rsvpStatus").textContent = "Đã ghi nhận: bạn sẽ đến chung vui cùng Phương Thảo ♥";
+      const rsvpStatus = document.getElementById("rsvpStatus");
+      if (rsvpStatus && window.localStorage.getItem("phuong-thao-rsvp") === "yes") {
+        rsvpStatus.textContent = "Đã ghi nhận: bạn sẽ đến chung vui cùng Phương Thảo ♥";
       }
     } catch (error) {
       // Storage can be unavailable in private browsing; the invitation still works.
@@ -403,13 +420,15 @@
   function setupScrollEffects() {
     const progress = document.querySelector(".scroll-progress span");
     const topbar = document.getElementById("topbar");
+    if (!progress && !topbar) return;
+
     let frame = 0;
 
     function paint() {
       const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       const ratio = Math.min(1, Math.max(0, window.scrollY / scrollable));
-      progress.style.transform = "scaleX(" + String(ratio) + ")";
-      topbar.classList.toggle("is-active", invitationOpened && window.scrollY > 110);
+      if (progress) progress.style.transform = "scaleX(" + String(ratio) + ")";
+      if (topbar) topbar.classList.toggle("is-active", invitationOpened && window.scrollY > 110);
       frame = 0;
     }
 
@@ -426,69 +445,117 @@
     if (reducedMotion || !window.matchMedia("(pointer: fine) and (min-width: 821px)").matches) return;
 
     const portraitWrap = document.querySelector("[data-parallax-card]");
-    const portraitCard = portraitWrap.querySelector(".portrait-card");
-    let portraitFrame = 0;
-    let portraitX = 0;
-    let portraitY = 0;
+    const portraitCard = portraitWrap ? portraitWrap.querySelector(".portrait-card") : null;
 
-    function paintPortrait() {
-      portraitCard.style.setProperty("--tilt-x", String(portraitY * -3.2) + "deg");
-      portraitCard.style.setProperty("--tilt-y", String(portraitX * 3.7) + "deg");
-      portraitFrame = 0;
+    if (portraitWrap && portraitCard) {
+      let portraitFrame = 0;
+      let portraitX = 0;
+      let portraitY = 0;
+
+      function paintPortrait() {
+        portraitCard.style.setProperty("--tilt-x", String(portraitY * -3.2) + "deg");
+        portraitCard.style.setProperty("--tilt-y", String(portraitX * 3.7) + "deg");
+        portraitFrame = 0;
+      }
+
+      portraitWrap.addEventListener("pointermove", function (event) {
+        const bounds = portraitWrap.getBoundingClientRect();
+        if (!bounds.width || !bounds.height) return;
+        portraitX = (event.clientX - bounds.left) / bounds.width - 0.5;
+        portraitY = (event.clientY - bounds.top) / bounds.height - 0.5;
+        if (!portraitFrame) portraitFrame = window.requestAnimationFrame(paintPortrait);
+      }, { passive: true });
+
+      portraitWrap.addEventListener("pointerleave", function () {
+        portraitX = 0;
+        portraitY = 0;
+        if (!portraitFrame) portraitFrame = window.requestAnimationFrame(paintPortrait);
+      }, { passive: true });
     }
-
-    portraitWrap.addEventListener("pointermove", function (event) {
-      const bounds = portraitWrap.getBoundingClientRect();
-      portraitX = (event.clientX - bounds.left) / bounds.width - 0.5;
-      portraitY = (event.clientY - bounds.top) / bounds.height - 0.5;
-      if (!portraitFrame) portraitFrame = window.requestAnimationFrame(paintPortrait);
-    }, { passive: true });
-
-    portraitWrap.addEventListener("pointerleave", function () {
-      portraitX = 0;
-      portraitY = 0;
-      if (!portraitFrame) portraitFrame = window.requestAnimationFrame(paintPortrait);
-    }, { passive: true });
 
     const collage = document.querySelector("[data-collage]");
-    const collageItems = Array.from(collage.querySelectorAll("[data-depth]"));
-    let collageFrame = 0;
-    let collageX = 0;
-    let collageY = 0;
+    if (collage) {
+      const collageItems = Array.from(collage.querySelectorAll("[data-depth]"));
+      let collageFrame = 0;
+      let collageX = 0;
+      let collageY = 0;
 
-    function paintCollage() {
-      collageItems.forEach(function (item) {
-        const depth = Number(item.getAttribute("data-depth")) || 0;
-        item.style.setProperty("--collage-x", String(collageX * depth) + "px");
-        item.style.setProperty("--collage-y", String(collageY * depth) + "px");
-      });
-      collageFrame = 0;
+      function paintCollage() {
+        collageItems.forEach(function (item) {
+          const depth = Number(item.getAttribute("data-depth")) || 0;
+          item.style.setProperty("--collage-x", String(collageX * depth) + "px");
+          item.style.setProperty("--collage-y", String(collageY * depth) + "px");
+        });
+        collageFrame = 0;
+      }
+
+      collage.addEventListener("pointermove", function (event) {
+        const bounds = collage.getBoundingClientRect();
+        if (!bounds.width || !bounds.height) return;
+        collageX = (event.clientX - bounds.left) / bounds.width - 0.5;
+        collageY = (event.clientY - bounds.top) / bounds.height - 0.5;
+        if (!collageFrame) collageFrame = window.requestAnimationFrame(paintCollage);
+      }, { passive: true });
+
+      collage.addEventListener("pointerleave", function () {
+        collageX = 0;
+        collageY = 0;
+        if (!collageFrame) collageFrame = window.requestAnimationFrame(paintCollage);
+      }, { passive: true });
     }
 
-    collage.addEventListener("pointermove", function (event) {
-      const bounds = collage.getBoundingClientRect();
-      collageX = (event.clientX - bounds.left) / bounds.width - 0.5;
-      collageY = (event.clientY - bounds.top) / bounds.height - 0.5;
-      if (!collageFrame) collageFrame = window.requestAnimationFrame(paintCollage);
-    }, { passive: true });
+    const sourceCollage = document.querySelector("[data-source-collage]");
+    if (sourceCollage) {
+      const sourceItems = Array.from(sourceCollage.querySelectorAll("[data-depth]"));
+      let sourceFrame = 0;
+      let sourceX = 0;
+      let sourceY = 0;
 
-    collage.addEventListener("pointerleave", function () {
-      collageX = 0;
-      collageY = 0;
-      if (!collageFrame) collageFrame = window.requestAnimationFrame(paintCollage);
-    }, { passive: true });
+      function paintSourceCollage() {
+        sourceCollage.style.setProperty("--source-tilt-x", String(sourceY * -1.4) + "deg");
+        sourceCollage.style.setProperty("--source-tilt-y", String(sourceX * 1.7) + "deg");
+        sourceItems.forEach(function (item) {
+          const depth = Number(item.getAttribute("data-depth")) || 0;
+          item.style.setProperty("--source-depth-x", String(sourceX * depth) + "px");
+          item.style.setProperty("--source-depth-y", String(sourceY * depth) + "px");
+        });
+        sourceFrame = 0;
+      }
+
+      sourceCollage.addEventListener("pointermove", function (event) {
+        const bounds = sourceCollage.getBoundingClientRect();
+        if (!bounds.width || !bounds.height) return;
+        sourceX = (event.clientX - bounds.left) / bounds.width - 0.5;
+        sourceY = (event.clientY - bounds.top) / bounds.height - 0.5;
+        if (!sourceFrame) sourceFrame = window.requestAnimationFrame(paintSourceCollage);
+      }, { passive: true });
+
+      sourceCollage.addEventListener("pointerleave", function () {
+        sourceX = 0;
+        sourceY = 0;
+        if (!sourceFrame) sourceFrame = window.requestAnimationFrame(paintSourceCollage);
+      }, { passive: true });
+    }
   }
 
   function updateCountdown() {
     const target = new Date(SITE_CONFIG.eventDate).getTime();
     const distance = target - Date.now();
     const message = document.getElementById("countdownMessage");
+    const units = ["days", "hours", "minutes", "seconds"];
+    const unitElements = units.reduce(function (elements, unit) {
+      const element = document.querySelector("[data-unit='" + unit + "']");
+      if (element) elements[unit] = element;
+      return elements;
+    }, {});
+
+    if (!message && !Object.keys(unitElements).length) return;
 
     if (!Number.isFinite(target) || distance <= 0) {
-      ["days", "hours", "minutes", "seconds"].forEach(function (unit) {
-        document.querySelector("[data-unit='" + unit + "']").textContent = "00";
+      Object.keys(unitElements).forEach(function (unit) {
+        unitElements[unit].textContent = "00";
       });
-      message.textContent = "Hôm nay là ngày Phương Thảo tỏa sáng — chúc mừng tân cử nhân!";
+      if (message) message.textContent = "Hôm nay là ngày Phương Thảo tỏa sáng — chúc mừng tân cử nhân!";
       window.clearInterval(countdownTimer);
       return;
     }
@@ -501,13 +568,14 @@
     };
 
     Object.keys(values).forEach(function (unit) {
-      const element = document.querySelector("[data-unit='" + unit + "']");
-      element.textContent = String(values[unit]).padStart(2, "0");
+      const element = unitElements[unit];
+      if (element) element.textContent = String(values[unit]).padStart(2, "0");
     });
   }
 
   function startCountdown() {
     window.clearInterval(countdownTimer);
+    if (!document.getElementById("countdownMessage") && !document.querySelector("[data-unit]")) return;
     updateCountdown();
     if (!document.hidden) countdownTimer = window.setInterval(updateCountdown, 1000);
   }
@@ -598,7 +666,7 @@
       const sender = personalizedGuest ? " — " + personalizedGuest : "";
       return "Chúc mừng tốt nghiệp Phương Thảo!" + (wish ? " " + wish : " Chúc bạn luôn rạng rỡ và thật thành công trên chặng đường mới!") + sender;
     }
-    return namePrefix + " sẽ tham dự Lễ tốt nghiệp của Phương Thảo lúc 16:00 ngày 08.08.2026 tại Đại học Văn Lang – Cơ sở 3. Hẹn gặp mọi người nhé!";
+    return namePrefix + " sẽ tham dự Lễ tốt nghiệp của Phương Thảo lúc 15:30 ngày 08.08.2026 tại Đại học Văn Lang – Cơ sở 3. Hẹn gặp mọi người nhé!";
   }
 
   function updateSmsLink() {
@@ -1303,42 +1371,59 @@
   }
 
   function setupInteractions() {
-    openButton.addEventListener("click", function () { finishOpening(false); });
-    openHint.addEventListener("click", function () { finishOpening(false); });
-    skipButton.addEventListener("click", function () { finishOpening(true); });
-    skipLink.addEventListener("click", function (event) {
-      if (!invitationOpened) {
-        event.preventDefault();
-        finishOpening(true);
-        window.setTimeout(function () {
-          document.getElementById("invitation").scrollIntoView();
-        }, 40);
-      }
-    });
-
-    document.getElementById("calendarButton").addEventListener("click", downloadCalendarEvent);
-    document.getElementById("calendarTopButton").addEventListener("click", downloadCalendarEvent);
-    document.getElementById("mapButton").addEventListener("click", openMap);
-    document.getElementById("shareButton").addEventListener("click", shareInvitation);
-
-    document.querySelectorAll("[data-rsvp]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        openResponseDialog(button.getAttribute("data-rsvp"), button);
+    if (openButton) openButton.addEventListener("click", function () { finishOpening(false); });
+    if (openHint) openHint.addEventListener("click", function () { finishOpening(false); });
+    if (skipButton) skipButton.addEventListener("click", function () { finishOpening(true); });
+    if (skipLink) {
+      skipLink.addEventListener("click", function (event) {
+        if (!invitationOpened) {
+          event.preventDefault();
+          finishOpening(true);
+          window.setTimeout(function () {
+            const invitation = document.getElementById("invitation");
+            if (invitation) invitation.scrollIntoView();
+          }, 40);
+        }
       });
+    }
+
+    const interactionButtons = [
+      ["calendarButton", downloadCalendarEvent],
+      ["calendarTopButton", downloadCalendarEvent],
+      ["mapButton", openMap],
+      ["shareButton", shareInvitation]
+    ];
+
+    interactionButtons.forEach(function (entry) {
+      const button = document.getElementById(entry[0]);
+      if (button) button.addEventListener("click", entry[1]);
     });
 
-    dialogClose.addEventListener("click", closeResponseDialog);
-    dialog.addEventListener("click", function (event) {
-      if (event.target === dialog) closeResponseDialog();
-    });
+    const dialogReady = Boolean(dialog && dialogClose && wishField && wishInput && smsLink);
+    if (dialogReady) {
+      document.querySelectorAll("[data-rsvp]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          openResponseDialog(button.getAttribute("data-rsvp"), button);
+        });
+      });
+
+      dialogClose.addEventListener("click", closeResponseDialog);
+      dialog.addEventListener("click", function (event) {
+        if (event.target === dialog) closeResponseDialog();
+      });
+      wishInput.addEventListener("input", updateSmsLink);
+      smsLink.addEventListener("click", function () {
+        updateSmsLink();
+        showToast("Đang mở ứng dụng tin nhắn…");
+      });
+    }
+
+    if (copyMessageButton && dialogReady) {
+      copyMessageButton.addEventListener("click", copyRsvpMessage);
+    }
+
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && !dialog.hidden) closeResponseDialog();
-    });
-    wishInput.addEventListener("input", updateSmsLink);
-    copyMessageButton.addEventListener("click", copyRsvpMessage);
-    smsLink.addEventListener("click", function () {
-      updateSmsLink();
-      showToast("Đang mở ứng dụng tin nhắn…");
+      if (event.key === "Escape" && dialog && !dialog.hidden) closeResponseDialog();
     });
 
     document.addEventListener("visibilitychange", function () {
@@ -1348,7 +1433,8 @@
   }
 
   function init() {
-    document.getElementById("invitation").setAttribute("tabindex", "-1");
+    const invitation = document.getElementById("invitation");
+    if (invitation) invitation.setAttribute("tabindex", "-1");
     applyPersonalization();
     setupRevealAnimations();
     setupScrollEffects();
@@ -1357,8 +1443,39 @@
     setupInteractions();
     startCountdown();
 
-    if (new URLSearchParams(window.location.search).get("preview") === "1") {
+    const previewParams = new URLSearchParams(window.location.search);
+    if (previewParams.get("preview") === "1") {
+      document.documentElement.dataset.previewSection = previewParams.get("section") || window.location.hash.slice(1) || "invitation";
       finishOpening(true);
+      if (window.location.hash && !previewParams.get("section")) {
+        let targetId = "";
+        try {
+          targetId = previewParams.get("section") || decodeURIComponent(window.location.hash.slice(1));
+        } catch (error) { targetId = ""; }
+        const alignPreviewTarget = function () {
+          const target = targetId ? document.getElementById(targetId) : null;
+          if (target) {
+            const previousBehavior = document.documentElement.style.scrollBehavior;
+            document.documentElement.style.scrollBehavior = "auto";
+            target.scrollIntoView({ block: "start", behavior: "auto" });
+            window.requestAnimationFrame(function () {
+              document.documentElement.style.scrollBehavior = previousBehavior;
+            });
+          }
+        };
+        const schedulePreviewAlignment = function () {
+          window.setTimeout(function () {
+            window.requestAnimationFrame(function () {
+              window.requestAnimationFrame(alignPreviewTarget);
+            });
+          }, 180);
+        };
+        schedulePreviewAlignment();
+        window.addEventListener("load", schedulePreviewAlignment, { once: true });
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(schedulePreviewAlignment);
+        }
+      }
     }
   }
 
